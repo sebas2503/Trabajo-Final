@@ -24,6 +24,7 @@ void guardia::menu()
             break;
         case 2:
             guardia::mostrar_datos();
+            break;
         case 3:
             guardia::eliminar_datos();
             break;
