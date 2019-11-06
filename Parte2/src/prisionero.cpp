@@ -23,6 +23,7 @@ void prisionero::menu()
             break;
         case 2:
             prisionero::mostrar_datos_prisionero();
+            break;
         case 3:
             prisionero::eliminar_prisionero();
             break;
