@@ -34,8 +34,10 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="include/guardias.h" />
 		<Unit filename="include/prisionero.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/guardias.cpp" />
 		<Unit filename="src/prisionero.cpp" />
 		<Extensions>
 			<envvars />

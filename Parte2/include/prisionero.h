@@ -9,6 +9,7 @@ class prisionero
         void menu();
         void registro();
         void mostrar_datos_prisionero();
+        void eliminar_prisionero();
     private:
         string codigo;
         string nombre;
