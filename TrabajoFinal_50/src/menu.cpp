@@ -1,4 +1,5 @@
 #include "menu.h"
+#include <cstdlib>
 void menu::prisionero()
 {
     do
@@ -19,21 +20,25 @@ void menu::prisionero()
                 }
             case 1:
                 {
+                    system("cls");
                     p1.registro();
                     break;
                 }
             case 2:
                 {
+                    system("cls");
                     p1.mostrar_datos_prisionero();
                     break;
                 }
             case 3:
                 {
+                    system("cls");
                     p1.eliminar_prisionero();
                     break;
                 }
             case 4:
                 {
+                    system("cls");
                     break;
                 }
         }
@@ -61,21 +66,25 @@ void menu::guardia()
                 }
             case 1:
                 {
+                    system("cls");
                     g1.registro();
                     break;
                 }
             case 2:
                 {
+                    system("cls");
                     g1.mostrar_datos();
                     break;
                 }
             case 3:
                 {
+                    system("cls");
                     g1.eliminar_datos();
                     break;
                 }
             case 4:
                 {
+                    system("cls");
                     break;
                 }
         }
@@ -101,16 +110,19 @@ void menu::menu_principal()
                 }
             case 1:
                 {
+                    system("cls");
                     prisionero();
                     break;
                 }
             case 2:
                 {
+                    system("cls");
                     guardia();
                     break;
                 }
             case 3:
                 {
+                    system("cls");
                     cout<<"\t\t\tGracias por usar Arkham\t\t\n";
                     break;
                 }
