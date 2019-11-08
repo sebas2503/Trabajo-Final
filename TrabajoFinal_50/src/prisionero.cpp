@@ -4,12 +4,10 @@
 using namespace std;
 void prisionero::registro()
 {
-   ofstream archivo;
-   ifstream lectura;
    bool mismo_codigo=false;
    string aux_codigo;
-   archivo.open("/Users/luisarroyo/Desktop/C++/TrabajoFinal_50/registro.txt",ios::app);
-   lectura.open("/Users/luisarroyo/Desktop/C++/TrabajoFinal_50/registro.txt",ios::in);
+   archivo.open("registro.txt",ios::app);
+   lectura.open("registro.txt",ios::in);
    if(archivo.is_open() && lectura.is_open())
    {
         cout<<"\n\t\t\t---Registrando a Prisionero---\n\n";
@@ -91,24 +89,23 @@ void prisionero::registro()
 void prisionero::mostrar_datos_prisionero()
 {
     string aux_codigo2;
-    ifstream lectura2;
     bool encontrado=false;
-    lectura2.open("/Users/luisarroyo/Desktop/C++/TrabajoFinal_50/registro.txt",ios::in);
-    if(lectura2.is_open())
+    lectura.open("registro.txt",ios::in);
+    if(lectura.is_open())
         {
             fflush(stdin);
             cout<<"\t\tConsultando datos de un prisionero\t\t"<<endl;
             cout<<"Ingrese el codigo del prisionero que desee ver sus datos: ";
             cin>>aux_codigo2;
-            getline(lectura2,codigo);
-            while(!lectura2.eof())
+            getline(lectura,codigo);
+            while(!lectura.eof())
                 {
-                    getline(lectura2,nombre);
-                    getline(lectura2,apellido);
-                    getline(lectura2,fecha_nacimiento);
-                    getline(lectura2,dni);
-                    getline(lectura2,nivel_peligro);
-                    getline(lectura2,condena);
+                    getline(lectura,nombre);
+                    getline(lectura,apellido);
+                    getline(lectura,fecha_nacimiento);
+                    getline(lectura,dni);
+                    getline(lectura,nivel_peligro);
+                    getline(lectura,condena);
 
                     if(aux_codigo2 == codigo)
                         {
@@ -123,36 +120,35 @@ void prisionero::mostrar_datos_prisionero()
                             cout<<"Condena: "<<condena<<endl;
                             cout<<"\n";
                         }
-                    getline(lectura2,codigo);
+                    getline(lectura,codigo);
                 }
                     if(encontrado == false)
                         {cout<<"Ese prisionero no se encuentra registrado: "<<aux_codigo2<<endl;}
         }
-    lectura2.close();
+    lectura.close();
 }
 void prisionero::eliminar_prisionero()
 {
     ofstream dar_baja1;
-    ifstream lectura2;
     string aux_codigo3;
     string dar_baja;
     string si("Si");
     bool verificar = false;
-    dar_baja1.open("/Users/luisarroyo/Desktop/C++/TrabajoFinal_50/dar_baja1.txt",ios::out);
-    lectura2.open("/Users/luisarroyo/Desktop/C++/TrabajoFinal_50/registro.txt",ios::in);;
-    if(dar_baja1.is_open() && lectura2.is_open())
+    dar_baja1.open("dar_baja1.txt",ios::out);
+    lectura.open("registro.txt",ios::in);;
+    if(dar_baja1.is_open() && lectura.is_open())
     {
         cout<<"Ingrese el codigo del prisionero para eliminarlo de la prision: ";
         cin>>aux_codigo3;
-        getline(lectura2,codigo);
-        while(!lectura2.eof())
+        getline(lectura,codigo);
+        while(!lectura.eof())
         {
-            getline(lectura2,nombre);
-            getline(lectura2,apellido);
-            getline(lectura2,fecha_nacimiento);
-            getline(lectura2,dni);
-            getline(lectura2,nivel_peligro);
-            getline(lectura2,condena);
+            getline(lectura,nombre);
+            getline(lectura,apellido);
+            getline(lectura,fecha_nacimiento);
+            getline(lectura,dni);
+            getline(lectura,nivel_peligro);
+            getline(lectura,condena);
             if(aux_codigo3 == codigo)
             {
                 verificar=true;
@@ -194,15 +190,15 @@ void prisionero::eliminar_prisionero()
                 dar_baja1<<nivel_peligro<<endl;
                 dar_baja1<<condena<<endl;
             }
-            getline(lectura2,codigo);
+            getline(lectura,codigo);
         }
         if(verificar==false)
         {
             cout<<"No se ha encontrado el codigo del prisionero"<<"ni esta registrado bro: "<<aux_codigo3<<endl;;
         }
     }
-    lectura2.close();
+    lectura.close();
     dar_baja1.close();
-    remove("/Users/luisarroyo/Desktop/C++/TrabajoFinal_50/registro.txt");
-    rename("/Users/luisarroyo/Desktop/C++/TrabajoFinal_50/dar_baja1.txt","/Users/luisarroyo/Desktop/C++/TrabajoFinal_50/registro.txt");
+    remove("registro.txt");
+    rename("dar_baja1.txt","registro.txt");
 }

@@ -7,6 +7,7 @@ void menu::prisionero()
         cout<<"1. Registrar"<<endl;
         cout<<"2. Mostrar datos"<<endl;
         cout<<"3. Eliminar datos"<<endl;
+        cout<<"4. Salir\n"<<endl;
         cout<<"Opcion: ";
         cin>>opcion;
         switch(opcion)

@@ -2,6 +2,7 @@
 #define PRISIONERO_H
 #include <string>
 #include <iostream>
+#include <fstream>
 using namespace std;
 
 class prisionero
@@ -19,6 +20,8 @@ class prisionero
         string fecha_nacimiento;
         string codigo;
         string condena;
+        ofstream archivo;
+        ifstream lectura;
 };
 
 #endif // PRISIONERO_H

@@ -4,13 +4,11 @@
 using namespace std;
 void guardia::registro()
 {
-    ofstream archivo1;
-    ifstream lectura1;
     bool verificado=false;
     string codigo_auxiliar;
-    archivo1.open("/Users/luisarroyo/Desktop/C++/TrabajoFinal_50/guardia.txt",ios::app);
-    lectura1.open("/Users/luisarroyo/Desktop/C++/TrabajoFinal_50/guardia.txt",ios::in);
-    if(lectura1.is_open() && archivo1.is_open())
+    archivo.open("guardia.txt",ios::app);
+    lectura.open("guardia.txt",ios::in);
+    if(lectura.is_open() && archivo.is_open())
     {
         cout<<"\t\t\tRegistrando a nuevo guardia\t\t\n\n";
         cout<<"Ingrese su codigo: ";
@@ -26,17 +24,17 @@ void guardia::registro()
      do
      {
 
-         lectura1.seekg(0);
-         getline(lectura1,codigo);
-         while(!lectura1.eof())
+         lectura.seekg(0);
+         getline(lectura,codigo);
+         while(!lectura.eof())
          {
 
-             getline(lectura1,nombre);
-             getline(lectura1,apellido);
-             getline(lectura1,dni);
-             getline(lectura1,seccion_trabajo);
-             getline(lectura1,celular);
-             getline(lectura1,turno);
+             getline(lectura,nombre);
+             getline(lectura,apellido);
+             getline(lectura,dni);
+             getline(lectura,seccion_trabajo);
+             getline(lectura,celular);
+             getline(lectura,turno);
              if(codigo==codigo_auxiliar)
              {
                  while(codigo==codigo_auxiliar)
@@ -47,9 +45,9 @@ void guardia::registro()
                  getline(cin,codigo_auxiliar);
                  }
              }
-             getline(lectura1,codigo);
+             getline(lectura,codigo);
          }
-         if(lectura1.eof() && codigo_auxiliar != codigo)
+         if(lectura.eof() && codigo_auxiliar != codigo)
             {verificado=false;}
     }
     while(verificado==true);
@@ -78,38 +76,37 @@ void guardia::registro()
     getline(cin,turno);
     cout<<endl;
     cout<<"\t\t\tSu registro se ha completado\t\t\n\n";
-    archivo1<<codigo<<"\n";
-    archivo1<<nombre<<"\n";
-    archivo1<<apellido<<"\n";
-    archivo1<<dni<<"\n";
-    archivo1<<seccion_trabajo<<"\n";
-    archivo1<<celular<<"\n";
-    archivo1<<turno<<"\n";
+    archivo<<codigo<<"\n";
+    archivo<<nombre<<"\n";
+    archivo<<apellido<<"\n";
+    archivo<<dni<<"\n";
+    archivo<<seccion_trabajo<<"\n";
+    archivo<<celular<<"\n";
+    archivo<<turno<<"\n";
     }
-    archivo1.close();
-    lectura1.close();
+    archivo.close();
+    lectura.close();
 }
 void guardia::mostrar_datos()
 {
     string aux_codigo2;
-    ifstream lectura2;
     bool encontrar=false;
-    lectura2.open("/Users/luisarroyo/Desktop/C++/TrabajoFinal_50/guardia.txt",ios::in);
-    if(lectura2.is_open())
+    lectura.open("guardia.txt",ios::in);
+    if(lectura.is_open())
     {
         fflush(stdin);
         cout<<"\t\tBuscando datos de un guardia\t\t\n";
         cout<<"Ingrese el codigo del guardia que busca: ";
         cin>>aux_codigo2;
-        getline(lectura2,codigo);
-        while(!lectura2.eof())
+        getline(lectura,codigo);
+        while(!lectura.eof())
         {
-            getline(lectura2,nombre);
-            getline(lectura2,apellido);
-            getline(lectura2,dni);
-            getline(lectura2,seccion_trabajo);
-            getline(lectura2,celular);
-            getline(lectura2,turno);
+            getline(lectura,nombre);
+            getline(lectura,apellido);
+            getline(lectura,dni);
+            getline(lectura,seccion_trabajo);
+            getline(lectura,celular);
+            getline(lectura,turno);
             if(aux_codigo2==codigo)
             {
                 encontrar=true;
@@ -122,40 +119,39 @@ void guardia::mostrar_datos()
                 cout<<"Su numero de celular es: "<<celular<<endl;
                 cout<<"Su turno es: "<<turno<<endl;
             }
-            getline(lectura2,codigo);
+            getline(lectura,codigo);
         }
             if(encontrar==false)
             {
                 cout<<"Este guardia no esta registrado: "<<aux_codigo2<<endl;
             }
     }
-    lectura2.close();
+    lectura.close();
 
 }
 
 void guardia::eliminar_datos()
 {
     ofstream dar_baja5;
-    ifstream lectura5;
     string aux_codigo;
     string eliminado;
     string si("Si");
     bool codigo_q=false;
-    dar_baja5.open("/Users/luisarroyo/Desktop/C++/TrabajoFinal_50/dar_baja.txt",ios::out);
-    lectura5.open("/Users/luisarroyo/Desktop/C++/TrabajoFinal_50/guardia.txt",ios::in);
-    if(dar_baja5.is_open() && lectura5.is_open())
+    dar_baja5.open("dar_baja.txt",ios::out);
+    lectura.open("guardia.txt",ios::in);
+    if(dar_baja5.is_open() && lectura.is_open())
     {
         cout<<"Ingrese el codigo del guardia a eliminar: ";
         cin>>aux_codigo;
-        getline(lectura5,codigo);
-        while(!lectura5.eof())
+        getline(lectura,codigo);
+        while(!lectura.eof())
         {
-            getline(lectura5,nombre);
-            getline(lectura5,apellido);
-            getline(lectura5,dni);
-            getline(lectura5,seccion_trabajo);
-            getline(lectura5,celular);
-            getline(lectura5,turno);
+            getline(lectura,nombre);
+            getline(lectura,apellido);
+            getline(lectura,dni);
+            getline(lectura,seccion_trabajo);
+            getline(lectura,celular);
+            getline(lectura,turno);
             if(aux_codigo==codigo)
             {
                 codigo_q=true;
@@ -197,15 +193,15 @@ void guardia::eliminar_datos()
                 dar_baja5<<celular<<endl;
                 dar_baja5<<turno<<endl;
             }
-            getline(lectura5,codigo);
+            getline(lectura,codigo);
         }
         if(codigo_q==false)
         {
             cout<<"No se ha encontrado el codigo del guardia ni estan sus datos: "<<aux_codigo<<endl;
         }
     }
-    lectura5.close();
+    lectura.close();
     dar_baja5.close();
-    remove("/Users/luisarroyo/Desktop/C++/TrabajoFinal_50/guardia.txt");
-    rename("/Users/luisarroyo/Desktop/C++/TrabajoFinal_50/dar_baja.txt","/Users/luisarroyo/Desktop/C++/TrabajoFinal_50/guardia.txt");
+    remove("guardia.txt");
+    rename("dar_baja.txt","guardia.txt");
 }
